@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+import { Container, Row, Col } from "react-bootstrap";
+import InfiniteCalendar from "react-infinite-calendar";
+import "react-infinite-calendar/styles.css"; // Make sure to import the default stylesheet
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [today, setToday] = useState(new Date());
+
+	const formatDate = date => {
+		var d = new Date(date),
+			month = "" + (d.getMonth() + 1),
+			day = "" + d.getDate(),
+			year = d.getFullYear();
+
+		if (month.length < 2) month = "0" + month;
+		if (day.length < 2) day = "0" + day;
+
+		return [year, month, day].join("-");
+	};
+
+	return (
+		<Container>
+			<Row>
+				<Col xs={12} lg={12}>
+					<InfiniteCalendar
+						locale={{
+							headerFormat: "M월D일",
+							weekdays: ["일", "월", "화", "수", "목", "금", "토"]
+						}}
+						displayOptions={{
+							layout: "landscape"
+						}}
+						width={600}
+						height={350}
+						selected={today}
+						onSelect={setToday}
+					/>
+					,
+				</Col>
+			</Row>
+		</Container>
+	);
 }
 
 export default App;
