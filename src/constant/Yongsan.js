@@ -1,0 +1,3 @@
+// 구장 순서별 코드
+// 1구장: A, 2구장: B, 3구장: C, 4구장: H ...
+export const fieldCodes = ["A", "B", "C", "H", "I", "E", "D"];
