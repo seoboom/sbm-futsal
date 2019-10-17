@@ -1,12 +1,27 @@
 .field_block {
-    border: 1px solid #cccccc;
+    border: 1px solid #eeeeee;
     border-radius: 5px;
     margin-top: 10px;
     padding: 10px;
 }
 
 .field_block>h1 {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
     margin: 0;
+}
+
+.spinner_wrapper {
+    position: relative;
+    text-align: left;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.state_wrapper {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 12px;
 }
