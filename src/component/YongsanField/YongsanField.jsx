@@ -14,9 +14,10 @@ function YongsanField({ date, fieldCode, fieldName }) {
 		setLoading(true);
 
 		axios
-			.post("https://www.hdc-iparkmall.com/plugin/ret_StadData_New.asp", qs.stringify({ curdate: date, curstadcode: fieldCode }), {
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded"
+			.get("https://8qc5nk28gi.execute-api.ap-northeast-2.amazonaws.com/prod/yongsan", {
+				params: {
+					curdate: date,
+					curstadcode: fieldCode
 				}
 			})
 			.then(response => {
