@@ -21,8 +21,6 @@ function YongsanField({ date, fieldCode, fieldName }) {
 				}
 			})
 			.then(response => {
-				console.log(response);
-
 				setFieldList(response.data.records);
 				setLoading(false);
 			})
