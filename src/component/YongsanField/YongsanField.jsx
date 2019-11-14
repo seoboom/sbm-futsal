@@ -6,25 +6,37 @@ import "./YongsanField.css";
 
 import { Spinner, Alert } from "react-bootstrap";
 
+
 function YongsanField({ date, fieldCode, fieldName }) {
 	const [loading, setLoading] = useState(false);
 	const [feildList, setFieldList] = useState([]);
+	const [cancel, setCancel] = useState(undefined);
 
+	const CancelToken = axios.CancelToken;
+	
 	useEffect(() => {
 		setLoading(true);
+		
+		if (cancel != undefined) {
+			cancel();
+		}
 
 		axios
 			.get("https://8qc5nk28gi.execute-api.ap-northeast-2.amazonaws.com/prod/yongsan", {
 				params: {
 					curdate: date,
 					curstadcode: fieldCode
-				}
+				},
+				cancelToken: new CancelToken(function executor(c) {
+					setCancel(()=>c);
+				})
 			})
 			.then(response => {
 				setFieldList(response.data.records);
 				setLoading(false);
 			})
-			.catch(error => {});
+			.catch(error => {
+			});
 	}, [date]);
 
 	return (
